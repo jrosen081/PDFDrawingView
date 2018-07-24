@@ -3,7 +3,7 @@ PDFDrawingView is a lightweight PDF Viewer that has built in functionality for d
 
 # How to Use:
 
-1. Create a PDF Document using either PDFKit or CoreGraphics, but PDFKit is recommended.
+1. Create a PDF Document using PDFKit.
 2. Import using CocoaPods or download from here.
 3. Use the constructor method.
 ```swift
