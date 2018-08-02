@@ -5,6 +5,19 @@ PDFDrawingView is a lightweight PDF Viewer that has built in functionality for d
 
 1. Create a PDF Document using PDFKit.
 2. Import using CocoaPods or download from here.
+* For CocoaPods, here is an example PodFile
+```pod
+# Uncomment the next line to define a global platform for your project
+platform :ios, '11.0'
+source "https://github.com/jrosen081/PDFDrawingView.git"
+target 'YOUR_TARGET_ID' do
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for drawSecure
+  pod 'DrawingPDF'
+end
+```
 3. Use the constructor method.
 ```swift
 let pdfDrawer = PDFDrawingView(frame: backgroundView.bounds, document: documentPDF, delegate: self) //Creates an instance of the view
