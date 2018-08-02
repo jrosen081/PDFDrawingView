@@ -19,6 +19,17 @@ public class PDFDrawingView: UIView{
         public static let lasso = "lasso"
     }
     /**
+     The width of the lines when drawing. It is scaled by 4 when highlighting vs. drawing
+     */
+    public var lineWidth: CGFloat{
+        get{
+            return Constants.lineWidth + Constants.halfPointShift
+        }
+        set{
+            Constants.lineWidth = max(5, newValue)
+        }
+    }
+    /**
      The document that was added
     */
     public let document: PDFDocument
@@ -158,6 +169,10 @@ public class PDFDrawingView: UIView{
         visiblePages.append(displayer)
         backgroundHold.subviews[0].addSubview(displayer)
     }
+    /**
+     Creates a new PDF out of the PDFView
+     - returns: The Data representation of the PDFDocument
+    */
     public func createPDF() -> Data {
         drawer.endLasso()
         drawer.hideAllKeyboards()
@@ -194,6 +209,10 @@ public class PDFDrawingView: UIView{
         self.currentPageNumber = page
         return newDocument as Data
     }
+    /**
+     Scrolls to a certain page
+     - parameter page: The page to scroll to
+    */
     public func scrollTo(page: Int){
         let currentPageNumber = page
         if (currentPageNumber < 1){

@@ -15,7 +15,7 @@ public struct Constants {
     public static let cornerRadii: CGSize = CGSize(width: 25, height: 25)
     public static let arrowWidth: CGFloat = 8
     public static let radii: CGFloat = 50
-    static let lineWidth: CGFloat = 5
+    static var lineWidth: CGFloat = 5
     static let opacity: Float = 0.25
     static let defaultPoint: CGPoint = CGPoint(x: -5, y: -5)
 }
