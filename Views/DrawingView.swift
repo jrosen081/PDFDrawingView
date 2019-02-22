@@ -116,14 +116,16 @@ final class DrawingView: UIView, UITextViewDelegate, UIGestureRecognizerDelegate
             self.layer.addSublayer(lines.last!.layer)
         } else if (drawingType == PDFDrawingView.DrawingKeys.erase){
 			var total = lines.count
+			var count = 0
 			for i in 0 ..< total {
-				let line = lines[i]
+				let line = lines[count]
 				if line.path.contains(tap.location(in: self)){
 					lines[i].removeAll()
 					lines.remove(at: i)
-					i -= 1
+					count -= 1
 					total -= 1
 				}
+				count += 1
 			}
         } else if (drawingType == PDFDrawingView.DrawingKeys.text){
             if (keyboard){
