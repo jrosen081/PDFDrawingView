@@ -80,8 +80,8 @@ final class DrawingView: UIView, UITextViewDelegate, UIGestureRecognizerDelegate
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: Notification.Name.UIKeyboardWillHide, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear), name: Notification.Name.UIKeyboardDidShow, object: nil)
+		//NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: Notification.Name.UIResponder.keyboardWillHideNotification, object: nil)
+		//NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear), name: Notification.Name.UIResponder.keyboardDidShowNotification, object: nil)
         self.backgroundColor = UIColor.clear
         self.isMultipleTouchEnabled = true
         self.isUserInteractionEnabled = true
@@ -117,9 +117,9 @@ final class DrawingView: UIView, UITextViewDelegate, UIGestureRecognizerDelegate
         } else if (drawingType == PDFDrawingView.DrawingKeys.erase){
 			var total = lines.count
 			var count = 0
-			for i in 0 ..< total {
+			for _ in 0 ..< total {
 				let line = lines[count]
-				if line.path.contains(tap.location(in: self)){
+				if line.contains(tap.location(in: self)){
 					lines[count].removeAll()
 					lines.remove(at: count)
 					count -= 1

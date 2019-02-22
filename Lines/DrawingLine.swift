@@ -20,23 +20,24 @@ class DrawingLine: Line{
     var opacity: Float
     private(set) var finished = false
     private(set) var color: CGColor
+	private var circular: Bool = false
     func append(_ point: CGPoint, with touch: UITouch?, path: UIBezierPath? = nil, predictedTouches: [CGPoint] = []){
         self.predicted = predictedTouches
         if (points.count >= 1){
             let last = points.last!
             let vector = last.distance(to: point).normalized().unitize() * scale
             if let _ = touch{
-            strokes.append(Stroke(touch: touch!, vector: vector, location: point))
-            if (touch!.estimationUpdateIndex == nil){
-                if (updatedIndex == strokes.count - 1){
-                    previousPoints = previousPoints ?? (last - vector, last + vector)
-                    _path.addStrokeToPath(stroke: strokes.last!, previousPoints: &previousPoints)
-                    updatedIndex = strokes.count
-                }
-            }else{
-                touchToStroke[touch!.estimationUpdateIndex!] = points.count - 1
-                }
-            }else{
+				strokes.append(Stroke(touch: touch!, vector: vector, location: point))
+				if (touch!.estimationUpdateIndex == nil){
+					if (updatedIndex == strokes.count - 1){
+						previousPoints = previousPoints ?? (last - vector, last + vector)
+						_path.addStrokeToPath(stroke: strokes.last!, previousPoints: &previousPoints)
+						updatedIndex = strokes.count
+					}
+				} else{
+					touchToStroke[touch!.estimationUpdateIndex!] = points.count - 1
+				}
+            } else{
                 previousPoints = previousPoints ?? (last - vector, last + vector)
                 strokes.append(Stroke(force: 1, vector: vector, location: point))
                 _path.addStrokeToPath(stroke: strokes.last!, previousPoints: &previousPoints)
@@ -45,6 +46,7 @@ class DrawingLine: Line{
         }
         points.append(point)
         if let _ = path{
+			circular = true
             _path = path!
             updatedIndex = strokes.count
         }
@@ -130,6 +132,21 @@ init(points: [CGPoint], opacity: Float, color: CGColor, lineWidth: CGFloat, draw
             self.points[index] = newValue
         }
     }
+	
+	func contains(_ point: CGPoint) -> Bool{
+		if circular {
+			return self._path.contains(point)
+		}
+		for counter in 0 ..< self.points.count - 1{
+			let thisPoint = self.points[counter]
+			let nextPoint = self.points[counter + 1]
+			let angle = atan2(Double(thisPoint.y - point.y), Double(thisPoint.x - point.x))
+			if (self.doIntersect(thisPoint, nextPoint, point.shiftDownBy(angle, Double(self.lineWidth)), point.shiftUpBy(angle, Double(self.lineWidth)))) {
+				return true
+			}
+		}
+		return false
+	}
     func intersects(line: Line) -> Bool{
         for counter in 1 ..< self.points.count{
             for tracker in 1 ..< line.points.count{
@@ -169,7 +186,7 @@ init(points: [CGPoint], opacity: Float, color: CGColor, lineWidth: CGFloat, draw
     override func drawLine(path: UIBezierPath? = nil){
         let newPath = path ?? self.path
         if (self.layer.path == nil){
-            self.layer.fillRule = kCAFillRuleNonZero
+			self.layer.fillRule = CAShapeLayerFillRule.nonZero
         }
         self.layer.path = newPath.cgPath
     }
@@ -213,4 +230,24 @@ fileprivate extension UIBezierPath{
         self.addLine(to: lastPoints.0)
         previousPoints = (actualBottom, actualTop)
     }
+}
+
+extension Double{
+	func abs() -> Double{
+		if self < 0 {
+			return -1 * self
+		} else {
+			return self
+		}
+	}
+}
+
+extension CGPoint {
+	func shiftUpBy(_ angle: Double, _ offsetAmount: Double) -> CGPoint {
+		return CGPoint(x: Double(self.x) + sin(angle) * offsetAmount, y: Double(self.y) + cos(angle) * offsetAmount)
+	}
+	
+	func shiftDownBy(_ angle: Double, _ offsetAmount: Double) -> CGPoint {
+		return CGPoint(x: Double(self.x) - sin(angle) * offsetAmount, y: Double(self.y) - cos(angle) * offsetAmount)
+	}
 }
