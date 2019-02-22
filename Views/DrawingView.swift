@@ -80,8 +80,8 @@ final class DrawingView: UIView, UITextViewDelegate, UIGestureRecognizerDelegate
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
-		//NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: Notification.Name.UIResponder.keyboardWillHideNotification, object: nil)
-		//NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear), name: Notification.Name.UIResponder.keyboardDidShowNotification, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: UIResponder.keyboardWillHideNotification, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear), name: UIResponder.keyboardDidShowNotification, object: nil)
         self.backgroundColor = UIColor.clear
         self.isMultipleTouchEnabled = true
         self.isUserInteractionEnabled = true
