@@ -114,16 +114,18 @@ final class DrawingView: UIView, UITextViewDelegate, UIGestureRecognizerDelegate
             lines.append(DrawingLine(points: [CGPoint(x: point.x - (2 * scale),y: point.y - (2 * scale)), CGPoint(x: point.x + (2 * scale),y: point.y - (2 * scale)), CGPoint(x: point.x + (2 * scale),y: point.y + (2 * scale))], opacity: 1, color: self.drawingColor.cgColor, lineWidth: 1, drawingType: .draw))
             lines[lines.count - 1].append(CGPoint(x: point.x - (2 * scale), y: point.y - (2 * scale)), with: nil, path: path)
             self.layer.addSublayer(lines.last!.layer)
-        }else if (drawingType == PDFDrawingView.DrawingKeys.erase){
-            for line in lines{
-                if line.path.contains(tap.location(in: self)){
-                    line.removeAll()
-                    if let index = lines.index(where: {object in object == line}){
-                        lines.remove(at: index)
-                    }
-                }
-            }
-        }else if (drawingType == PDFDrawingView.DrawingKeys.text){
+        } else if (drawingType == PDFDrawingView.DrawingKeys.erase){
+			var total = lines.count
+			for i in 0 ..< total {
+				let line = lines[i]
+				if line.path.contains(tap.location(in: self)){
+					lines[i].removeAll()
+					lines.remove(at: i)
+					i -= 1
+					total -= 1
+				}
+			}
+        } else if (drawingType == PDFDrawingView.DrawingKeys.text){
             if (keyboard){
                 self.hideAllKeyboards()
                 startPoint = CGPoint(x: -100, y: -100)
