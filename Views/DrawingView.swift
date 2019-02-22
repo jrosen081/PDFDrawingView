@@ -120,8 +120,8 @@ final class DrawingView: UIView, UITextViewDelegate, UIGestureRecognizerDelegate
 			for i in 0 ..< total {
 				let line = lines[count]
 				if line.path.contains(tap.location(in: self)){
-					lines[i].removeAll()
-					lines.remove(at: i)
+					lines[count].removeAll()
+					lines.remove(at: count)
 					count -= 1
 					total -= 1
 				}
