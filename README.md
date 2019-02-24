@@ -31,7 +31,7 @@ It is that simple.
 4. Adding text boxes and being able to move and resize them.
 5. Moving different lines and zooming with the lasso tool.
 4. Apple Pencil compatible, with force changing the lines being drawn
-5. The PDF can be displayed either verrtically or horizontally.
+5. The PDF can be displayed either vertically or horizontally.
 6. Making a new PDF with the drawing on it.
 
 # Ways to choose the tool to use
