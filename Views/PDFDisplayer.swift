@@ -12,8 +12,10 @@ import PDFKit
 public final class PDFPageDisplayer: UIView {
     public var page: PDFPage?
     public var pageNumber = 0
-    init(frame: CGRect, page: PDFPage?)
+	private let scale: CGFloat
+	init(frame: CGRect, page: PDFPage?, scale: CGFloat = 1)
     {
+		self.scale = scale
         super.init(frame: frame)
         self.frame = frame
         self.page = page
@@ -26,11 +28,17 @@ public final class PDFPageDisplayer: UIView {
         UIColor.white.setFill()
         context.fill(rect)
         context.translateBy(x: 0, y: rect.height)
-        context.scaleBy(x: 1, y: -1)
+        context.scaleBy(x: scale, y: -scale)
         document.draw(with: .artBox, to: context)
         let path = UIBezierPath()
         path.move(to: CGPoint(x: 0,y: self.bounds.minY))
-        path.addLine(to: CGPoint(x: UIScreen.main.bounds.width, y: self.bounds.minY))
+        path.addLine(to: CGPoint(x: self.bounds.maxX, y: self.bounds.minY))
+		path.move(to: CGPoint(x: 0, y: 0))
+		path.addLine(to: CGPoint(x: 0, y: self.bounds.maxY))
+		path.move(to: CGPoint(x: self.bounds.maxX, y: 0))
+		path.addLine(to: CGPoint(x: self.bounds.maxX, y: self.bounds.maxY))
+		path.move(to: CGPoint(x: 0, y: 0))
+		path.addLine(to: CGPoint(x: self.bounds.maxX, y: 0))
         UIColor.lightGray.setStroke()
         path.stroke()
     }

@@ -27,3 +27,8 @@ enum DrawingTypes{
     case text
     case erase
 }
+
+public enum DrawingStyle {
+	case vertical
+	case horizontal
+}

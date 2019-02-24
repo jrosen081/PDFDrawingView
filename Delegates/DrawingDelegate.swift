@@ -11,11 +11,6 @@ import UIKit
 
 protocol DrawingDelegate: class{
     /**
-     The scale that the PDF was transformed
-     - returns: The transformed scale
-     */
-    var scale: CGFloat {get}
-    /**
      The zoom scale of the PDFView
      - returns: The zoom scale
      */

@@ -14,31 +14,26 @@ final class DrawingView: UIView, UITextViewDelegate, UIGestureRecognizerDelegate
         return true
     }
     weak var delegate: DrawingDelegate?
-    private var previousPoints = [Line]()
-    private var previousLayers = [CALayer]()
     private var previousPoint = CGPoint()
     private var startPoint = CGPoint()
     private var touchPoint = CGPoint()
     private var swiped = false
-    private var layers: [CAShapeLayer] = [CAShapeLayer]()
     var drawingColor = UIColor.black
     var highlightColor = UIColor.yellow
     private var lines: [DrawingLine] = [DrawingLine]()
-    private var keyboard = false
+    private var keyboardIsOpen = false
     private let menu = UIMenuController.shared
     private var textView = OverTopText()
-    private var selectedIndex = [Int]()
+    private var lassoLayers = [Int]()
     lazy var tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tapped(_:)))
     var drawingType = PDFDrawingView.DrawingKeys.draw
-    var edit = false
     var textViews = [OverTopText]()
-    var scale: CGFloat = 1
     var scrollViewIsScrolling: Bool{
         return delegate?.scrollViewIsScrolling() ?? false
     }
-    private var selected = false {
+    private var lassoHasElements = false {
         didSet{
-            if (selected){
+            if (lassoHasElements){
                 canZoom = false
             }
             else
@@ -67,11 +62,11 @@ final class DrawingView: UIView, UITextViewDelegate, UIGestureRecognizerDelegate
             }
         }
     }
-    private var touchesName = 0{
+    private var numberOfTouches = 0 {
         didSet{
             for textView in textViews
             {
-                textView.touches = self.touchesName
+                textView.touches = self.numberOfTouches
             }
         }
     }
@@ -97,10 +92,10 @@ final class DrawingView: UIView, UITextViewDelegate, UIGestureRecognizerDelegate
         self.addGestureRecognizer(tapGesture)
     }
     @objc func keyboardWillDisappear(){
-        keyboard = false
+        keyboardIsOpen = false
     }
     @objc func keyboardWillAppear(){
-        keyboard = true
+        keyboardIsOpen = true
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -109,10 +104,9 @@ final class DrawingView: UIView, UITextViewDelegate, UIGestureRecognizerDelegate
     @objc func tapped(_ tap: UITapGestureRecognizer){
         if (drawingType == PDFDrawingView.DrawingKeys.draw){
             let point = tap.location(in: self)
-            let scale = delegate?.scale ?? 1
-            let path = UIBezierPath(arcCenter: point, radius: 2 * scale, startAngle: 0, endAngle: 2 * .pi, clockwise: true)
-            lines.append(DrawingLine(points: [CGPoint(x: point.x - (2 * scale),y: point.y - (2 * scale)), CGPoint(x: point.x + (2 * scale),y: point.y - (2 * scale)), CGPoint(x: point.x + (2 * scale),y: point.y + (2 * scale))], opacity: 1, color: self.drawingColor.cgColor, lineWidth: 1, drawingType: .draw))
-            lines[lines.count - 1].append(CGPoint(x: point.x - (2 * scale), y: point.y - (2 * scale)), with: nil, path: path)
+            let path = UIBezierPath(arcCenter: point, radius: Constants.lineWidth, startAngle: 0, endAngle: 2 * .pi, clockwise: true)
+            lines.append(DrawingLine(points: [CGPoint(x: point.x - Constants.lineWidth,y: point.y - Constants.lineWidth), CGPoint(x: point.x + Constants.lineWidth,y: point.y - Constants.lineWidth), CGPoint(x: point.x + Constants.lineWidth,y: point.y + Constants.lineWidth)], opacity: 1, color: self.drawingColor.cgColor, lineWidth: 1, drawingType: .draw))
+            lines[lines.count - 1].append(CGPoint(x: point.x - Constants.lineWidth, y: point.y - Constants.lineWidth), with: nil, path: path)
             self.layer.addSublayer(lines.last!.layer)
         } else if (drawingType == PDFDrawingView.DrawingKeys.erase){
 			var total = lines.count
@@ -128,15 +122,14 @@ final class DrawingView: UIView, UITextViewDelegate, UIGestureRecognizerDelegate
 				count += 1
 			}
         } else if (drawingType == PDFDrawingView.DrawingKeys.text){
-            if (keyboard){
+            if (keyboardIsOpen){
                 self.hideAllKeyboards()
                 startPoint = CGPoint(x: -100, y: -100)
                 return
             }
-            edit = true
             startPoint = CGPoint(x: -100, y: -100)
             let center = tap.location(in: self)
-            let textView: OverTopText = OverTopText(frame: CGRect(x:center.x - (self.frame.width / 8) / 2, y:center.y - 20, width: self.frame.width / CGFloat(8) * scale, height: 30 * scale), textContainer: nil)
+            let textView: OverTopText = OverTopText(frame: CGRect(x:center.x - 75, y:center.y - 20, width: 150, height: 30), textContainer: nil)
             textView.layer.borderColor = UIColor.darkText.cgColor
             textView.layer.borderWidth = 1
             textView.layer.shadowColor = UIColor.black.cgColor
@@ -152,7 +145,7 @@ final class DrawingView: UIView, UITextViewDelegate, UIGestureRecognizerDelegate
             lines.append(DrawingLine(points: [Constants.defaultPoint], opacity: 1, color: UIColor.clear.cgColor, lineWidth: 1, drawingType: .text))
             moveTextView(textView: textView)
         }else if (drawingType == PDFDrawingView.DrawingKeys.lasso){
-            if (selected && !lasso.contains(test: tap.location(in: self))){
+            if (lassoHasElements && !lasso.contains(test: tap.location(in: self))){
                 self.endLasso()
             }
         }
@@ -178,13 +171,13 @@ final class DrawingView: UIView, UITextViewDelegate, UIGestureRecognizerDelegate
         if (drawingType != PDFDrawingView.DrawingKeys.scroll && startPoint != CGPoint(x: -100, y: -100))
         {
             swiped = true
-            if ((drawingType == PDFDrawingView.DrawingKeys.draw || drawingType == PDFDrawingView.DrawingKeys.highlight) && !lines.last!.finished)
+            if ((drawingType == PDFDrawingView.DrawingKeys.draw || drawingType == PDFDrawingView.DrawingKeys.highlight) && !(lines.last?.finished ?? false))
             {
                 if (touch.majorRadius >= 50){
                     return
                 }
                 guard let event = event, let predicted = event.predictedTouches(for: touch) else {return}
-                lines[lines.count - 1].append(touchPoint, with: touch, predictedTouches: predicted.map({$0.location(in: self)}))
+                lines.last?.append(touchPoint, with: touch, predictedTouches: predicted.map({$0.location(in: self)}))
                 previousPoint = startPoint
                 startPoint = touchPoint
                 return
@@ -200,7 +193,7 @@ final class DrawingView: UIView, UITextViewDelegate, UIGestureRecognizerDelegate
             }
             else if (drawingType == PDFDrawingView.DrawingKeys.lasso)
             {
-                if (!selected)
+                if (!lassoHasElements)
                 {
                     lasso.append(point: touchPoint, predicted: event?.predictedTouches(for: touch)?.map({$0.location(in: self)}) ?? [])
                 }
@@ -217,19 +210,19 @@ final class DrawingView: UIView, UITextViewDelegate, UIGestureRecognizerDelegate
             textViewDidEndEditing(view)
             menu.setMenuVisible(false, animated: false)
         }
-        keyboard = false
+        keyboardIsOpen = false
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let eventList = event, let total = eventList.allTouches{
-            touchesName = total.count
+            numberOfTouches = total.count
         }
-        if (keyboard)
+        if (keyboardIsOpen)
         {
             startPoint = CGPoint(x: -100, y: -100)
             hideAllKeyboards()
             return
         }
-        if (touches.count > 1 || touchesName > 1 || scrollViewIsScrolling)
+        if (touches.count > 1 || numberOfTouches > 1 || scrollViewIsScrolling)
         {
             startPoint = CGPoint(x: -100, y: -100)
             return
@@ -239,7 +232,7 @@ final class DrawingView: UIView, UITextViewDelegate, UIGestureRecognizerDelegate
         {
             guard let touch = touches.first else {return}
             startPoint = touch.location(in: self)
-            if (!selected)
+            if (!lassoHasElements)
             {
                 lasso.removeAll()
                 lasso.starts(at: startPoint)
@@ -289,7 +282,7 @@ final class DrawingView: UIView, UITextViewDelegate, UIGestureRecognizerDelegate
         }
         else if (drawingType == PDFDrawingView.DrawingKeys.lasso)
         {
-            if (!selected && lasso.points.count > 1)
+            if (!lassoHasElements && lasso.points.count > 1)
             {
                 lasso.append(point: lasso.first!, predicted: [])
                 var something = false
@@ -297,7 +290,7 @@ final class DrawingView: UIView, UITextViewDelegate, UIGestureRecognizerDelegate
                 for line in lines
                 {
                     if (lasso.contains(line: line)){
-                        self.selectedIndex.append(counter)
+                        self.lassoLayers.append(counter)
                         line.layer.opacity = 0.75
                         line.layer.shadowColor = line.color
                         line.layer.shadowRadius = Constants.lineWidth / 2
@@ -310,7 +303,7 @@ final class DrawingView: UIView, UITextViewDelegate, UIGestureRecognizerDelegate
                 if (something == false)
                 {
                     lasso.removeAll()
-                    selected = false
+                    lassoHasElements = false
                     return
                 }
                 let pan = UIPanGestureRecognizer(target: self, action: #selector(self.swipe(_:)))
@@ -320,7 +313,7 @@ final class DrawingView: UIView, UITextViewDelegate, UIGestureRecognizerDelegate
                 zoom.delegate = self
                 self.addGestureRecognizer(zoom)
                 startPoint = CGPoint.zero
-                selected = true
+                lassoHasElements = true
             }
         }
         for line in self.lines.filter({$0.layer.opacity == Constants.opacity}){
@@ -371,7 +364,7 @@ final class DrawingView: UIView, UITextViewDelegate, UIGestureRecognizerDelegate
             differenceY = pan.location(in: self).y - startPoint.y
         }
         vector = CGVector(dx: differenceX, dy: differenceY)
-        for index in self.selectedIndex{
+        for index in self.lassoLayers{
             self.lines[index].translate(by: vector)
         }
         lasso.translate(by: vector)
@@ -399,12 +392,12 @@ final class DrawingView: UIView, UITextViewDelegate, UIGestureRecognizerDelegate
     }
     //Ends the lasso
     func endLasso(){
-        if selected
+        if lassoHasElements
         {
-            self.selectedIndex.removeAll()
+            self.lassoLayers.removeAll()
             lasso.removeAll()
             startPoint = CGPoint(x: -100, y: -100)
-            selected = false
+            lassoHasElements = false
             self.gestureRecognizers?.removeAll()
             let press = UILongPressGestureRecognizer(target: self, action: #selector(self.straight(_:)))
             press.delegate = self
@@ -432,7 +425,7 @@ final class DrawingView: UIView, UITextViewDelegate, UIGestureRecognizerDelegate
             lines.remove(at: counter)
             textView.removeFromSuperview()
             menu.menuItems = nil
-            keyboard = false
+            keyboardIsOpen = false
             self.becomeFirstResponder()
         }
     }
@@ -462,7 +455,7 @@ final class DrawingView: UIView, UITextViewDelegate, UIGestureRecognizerDelegate
             menu.menuItems = [item1, item2, item3, item4]
             menu.setTargetRect(self.textView.frame, in: self)
             menu.setMenuVisible(true, animated: false)
-            keyboard = true
+            keyboardIsOpen = true
         }
     }
     override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {

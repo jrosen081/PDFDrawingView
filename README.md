@@ -20,7 +20,7 @@ end
 ```
 3. Use the constructor method.
 ```swift
-let pdfDrawer = PDFDrawingView(frame: backgroundView.bounds, document: documentPDF, delegate: self) //Creates an instance of the view
+let pdfDrawer = PDFDrawingView(frame: backgroundView.bounds, document: documentPDF, style: .vertical, delegate: self) //Creates an instance of the view with the PDF being displayed vertically
 ```
 It is that simple.
 
@@ -31,6 +31,8 @@ It is that simple.
 4. Adding text boxes and being able to move and resize them.
 5. Moving different lines and zooming with the lasso tool.
 4. Apple Pencil compatible, with force changing the lines being drawn
+5. The PDF can be displayed either verrtically or horizontally.
+6. Making a new PDF with the drawing on it.
 
 # Ways to choose the tool to use
 - There is a struct which has all of the options.
@@ -52,6 +54,26 @@ pdfDrawer.drawingKey = PDFDrawingView.DrawingKeys.draw //Will have the view draw
 ```swift
 pdfDrawer.drawingColor = UIColor.red //Changes the drawing color to red
 pdfDrawer.highlightColor = UIColor.yellow //Changes the highlight color to yellow
+```
+# How to decide the display of the PDF
+- There is an enum that has the options
+```swift
+public enum DrawingStyle {
+	case vertical
+	case horizontal
+}
+```
+- Pass in the style into the constructor.
+- It displays the PDF vertically by default if you do not give it a value
+# How to create a new PDF with the drawing
+- There is a method in PDFDrawingView that will return the data for the PDF
+```swift
+let pdfData = self.pdfDrawer.createPDF()
+```
+- If you then want to save it locally, use the built-in method for PDFDocuments
+```swift
+let updatedDocument = PDFDocument(data: pdfData)
+updatedDocument?.write(to: "SAMPLE_PATH")
 ```
 # Implement the delegate protocol for more information about the PDFDrawingView
 ## The delegate tells you when:
