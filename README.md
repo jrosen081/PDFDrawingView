@@ -24,6 +24,7 @@ let pdfDrawer = PDFDrawingView(frame: backgroundView.bounds, document: documentP
 ```
 It is that simple.
 
+## A <a href = "https://github.com/jrosen081/PDFDrawingView/tree/master/Sample%20Project">  sample project </a> is included  to show how to use the PDFDrawingView.
 # Features:
 1. Normal Drawing
 2. Highlighting
