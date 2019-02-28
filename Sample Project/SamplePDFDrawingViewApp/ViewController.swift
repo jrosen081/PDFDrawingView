@@ -23,11 +23,9 @@ class ViewController: UIViewController, PDFDelegate {
 	 * The PDF Drawing View
 	 */
 	var pdfView: PDFDrawingView!
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		// Gets the document, puts it into the PDFDrawingView and adds it to the view
+	override func viewDidAppear(_ animated: Bool) {
 		if let path = Bundle.main.path(forResource: "ListAbstractions", ofType: "pdf"), let pdf = PDFDocument(url: URL(fileURLWithPath: path)){
-			pdfView = PDFDrawingView(frame: self.holdingView.frame, document: pdf, delegate: self)
+			pdfView = PDFDrawingView(frame: self.holdingView.bounds, document: pdf, style: .horizontal, delegate: self)
 			self.holdingView.addSubview(pdfView)
 		}
 	}
