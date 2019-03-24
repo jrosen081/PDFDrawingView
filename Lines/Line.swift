@@ -17,12 +17,14 @@ class Line: Equatable{
     var layer = CAShapeLayer()
     var _path = UIBezierPath()
     var predicted = [CGPoint]()
+	
     var first: CGPoint?{
         return points.first
     }
     var last: CGPoint? {
         return points.last
     }
+	
     var path: UIBezierPath{
         let newPath = UIBezierPath()
         var previousPoint = points.last!
@@ -39,7 +41,8 @@ class Line: Equatable{
         layer.lineWidth = Constants.lineWidth + Constants.halfPointShift
     }
     func drawLine(path: UIBezierPath? = nil){}
-    
+	
+	// Performs a zoom operation on this line
     @discardableResult
     func zoom(scale: CGFloat, moveBy: CGVector?) -> CGVector{
         let bounds = _path.bounds
@@ -47,16 +50,13 @@ class Line: Equatable{
         let move: CGVector
         let newBounds = _path.bounds
         move = moveBy ?? CGVector(dx: bounds.midX - newBounds.midX, dy: bounds.midY - newBounds.midY)
-        
-        for counter in 0 ..< points.count{
-            points[counter] = points[counter].applying(CGAffineTransform(scaleX: scale, y: scale))
-        }
+		points = points.map({$0.applying(CGAffineTransform(scaleX: scale, y: scale))})
         translate(by: move)
         return move
     }
+	// Performs a translate operation on this line
     func translate(by vector: CGVector){
-        for counter in 0 ..< points.count{ points[counter].moveBy(x: vector.dx, y: vector.dy)
-        }
+		points = points.map({$0.moveBy(x: vector.dx, y: vector.dy)})
         _path.apply(CGAffineTransform(translationX: vector.dx, y: vector.dy))
         self.drawLine()
     }
@@ -66,9 +66,9 @@ extension CGPoint{
     {
         return CGPoint(x: (self.x + point.x) / 2, y: (self.y + point.y) / 2)
     }
-    public mutating func moveBy(x: CGFloat, y: CGFloat)
+	
+    public func moveBy(x: CGFloat, y: CGFloat) -> CGPoint
     {
-        self.x += x
-        self.y += y
+		return self + CGVector(dx: x, dy: y)
     }
 }

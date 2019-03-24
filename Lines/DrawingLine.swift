@@ -21,10 +21,15 @@ class DrawingLine: Line{
     private(set) var finished = false
     private(set) var color: CGColor
 	private var circular: Bool = false
+	// Wrapper for append to work more functionally
+	func funAppend(_ point: CGPoint, with touch: UITouch?, path: UIBezierPath? = nil, predictedTouches: [CGPoint] = []) -> DrawingLine{
+		self.append(point, with: touch, path: path, predictedTouches: predictedTouches)
+		return self
+	}
+	// Appends the given info onto the line
     func append(_ point: CGPoint, with touch: UITouch?, path: UIBezierPath? = nil, predictedTouches: [CGPoint] = []){
         self.predicted = predictedTouches
-        if (points.count >= 1){
-            let last = points.last!
+		if let last = points.last{
             let vector = last.distance(to: point).normalized().unitize() * scale
             if let _ = touch{
 				strokes.append(Stroke(touch: touch!, vector: vector, location: point))
@@ -44,7 +49,7 @@ class DrawingLine: Line{
                 updatedIndex = strokes.count
             }
         }
-        points.append(point)
+        self.points.append(point)
         if let _ = path{
 			circular = true
             _path = path!
@@ -52,11 +57,22 @@ class DrawingLine: Line{
         }
         self.drawLine(path: path)
     }
+	
+	// Updates the opacity of this line
+	func updateOpacity() {
+		if (self.opacity == self.layer.opacity) {
+			self.layer.opacity = Constants.opacity
+		} else {
+			self.layer.opacity = self.opacity
+		}
+	}
+	// Ends the line at the end
     func finishAll(){
         predicted.removeAll()
         _path = path
         finished = true
     }
+	// finishes the line when the given touch was given the finished touch
     func finish(with touch: UITouch){
         if let index = touchToStroke[touch.estimationUpdateIndex!]{
             touchToStroke.removeValue(forKey: touch.estimationUpdateIndex!)
@@ -75,6 +91,7 @@ class DrawingLine: Line{
             }
         }
     }
+	// Destroys the given line
     func removeAll(){
         self.points.removeAll()
         self.strokes.removeAll()
@@ -87,7 +104,7 @@ class DrawingLine: Line{
     }
     private(set) var drawingType: DrawingTypes
     
-init(points: [CGPoint], opacity: Float, color: CGColor, lineWidth: CGFloat, drawingType: DrawingTypes){
+	init(points: [CGPoint], opacity: Float, color: CGColor, lineWidth: CGFloat, drawingType: DrawingTypes){
         self.opacity = opacity
         self.color = color
         self.lineWidth = lineWidth
@@ -98,6 +115,13 @@ init(points: [CGPoint], opacity: Float, color: CGColor, lineWidth: CGFloat, draw
         self.layer.opacity = opacity
         self.layer.strokeColor = nil
     }
+	
+	// Convenience constructor
+	convenience init(startingPoint: CGPoint, color: CGColor) {
+		self.init(points: [startingPoint], opacity: 1, color: color, lineWidth: Constants.lineWidth, drawingType: .draw)
+	}
+	
+	// The finished path plus all points not finished/predicted
     override var path: UIBezierPath{
         let newPath = UIBezierPath()
         newPath.append(_path)
@@ -133,6 +157,7 @@ init(points: [CGPoint], opacity: Float, color: CGColor, lineWidth: CGFloat, draw
         }
     }
 	
+	// Does the given path contain the point within?
 	func contains(_ point: CGPoint) -> Bool{
 		if circular {
 			return self._path.contains(point)
@@ -147,6 +172,7 @@ init(points: [CGPoint], opacity: Float, color: CGColor, lineWidth: CGFloat, draw
 		}
 		return false
 	}
+	// Do the two line intersect?
     func intersects(line: Line) -> Bool{
         for counter in 1 ..< self.points.count{
             for tracker in 1 ..< line.points.count{
@@ -157,7 +183,7 @@ init(points: [CGPoint], opacity: Float, color: CGColor, lineWidth: CGFloat, draw
         }
         return false
     }
-    //Check if the two lines intersect
+    //Check if the two lines intersect, given their endpoints
     private func doIntersect(_ p1: CGPoint, _ q1: CGPoint, _ p2: CGPoint, _ q2: CGPoint) -> Bool
     {
         let o1 = orientation(p1, q1, p2)

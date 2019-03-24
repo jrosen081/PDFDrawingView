@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A0A9049A224827FF0012E056 /* PDFDrawingViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A90499224827FF0012E056 /* PDFDrawingViewTests.swift */; };
 		A0F14B0C221EF7E4009DC4D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F14B0B221EF7E4009DC4D2 /* AppDelegate.swift */; };
 		A0F14B0E221EF7E4009DC4D2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F14B0D221EF7E4009DC4D2 /* ViewController.swift */; };
 		A0F14B11221EF7E4009DC4D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0F14B0F221EF7E4009DC4D2 /* Main.storyboard */; };
@@ -15,7 +16,20 @@
 		A0F14B1E221EF944009DC4D2 /* ListAbstractions.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A0F14B1D221EF944009DC4D2 /* ListAbstractions.pdf */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		A0A9049C224827FF0012E056 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A0F14B00221EF7E4009DC4D2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A0F14B07221EF7E4009DC4D2;
+			remoteInfo = SamplePDFDrawingViewApp;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		A0A90497224827FF0012E056 /* PDFDrawingViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PDFDrawingViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0A90499224827FF0012E056 /* PDFDrawingViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFDrawingViewTests.swift; sourceTree = "<group>"; };
+		A0A9049B224827FF0012E056 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0F14B08221EF7E4009DC4D2 /* SamplePDFDrawingViewApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SamplePDFDrawingViewApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0F14B0B221EF7E4009DC4D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0F14B0D221EF7E4009DC4D2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -27,6 +41,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A0A90494224827FF0012E056 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A0F14B05221EF7E4009DC4D2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -37,10 +58,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A0A90498224827FF0012E056 /* PDFDrawingViewTests */ = {
+			isa = PBXGroup;
+			children = (
+				A0A90499224827FF0012E056 /* PDFDrawingViewTests.swift */,
+				A0A9049B224827FF0012E056 /* Info.plist */,
+			);
+			path = PDFDrawingViewTests;
+			sourceTree = "<group>";
+		};
 		A0F14AFF221EF7E4009DC4D2 = {
 			isa = PBXGroup;
 			children = (
 				A0F14B0A221EF7E4009DC4D2 /* SamplePDFDrawingViewApp */,
+				A0A90498224827FF0012E056 /* PDFDrawingViewTests */,
 				A0F14B09221EF7E4009DC4D2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -49,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				A0F14B08221EF7E4009DC4D2 /* SamplePDFDrawingViewApp.app */,
+				A0A90497224827FF0012E056 /* PDFDrawingViewTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,6 +102,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		A0A90496224827FF0012E056 /* PDFDrawingViewTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A0A904A0224827FF0012E056 /* Build configuration list for PBXNativeTarget "PDFDrawingViewTests" */;
+			buildPhases = (
+				A0A90493224827FF0012E056 /* Sources */,
+				A0A90494224827FF0012E056 /* Frameworks */,
+				A0A90495224827FF0012E056 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A0A9049D224827FF0012E056 /* PBXTargetDependency */,
+			);
+			name = PDFDrawingViewTests;
+			productName = PDFDrawingViewTests;
+			productReference = A0A90497224827FF0012E056 /* PDFDrawingViewTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		A0F14B07221EF7E4009DC4D2 /* SamplePDFDrawingViewApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A0F14B1A221EF7E6009DC4D2 /* Build configuration list for PBXNativeTarget "SamplePDFDrawingViewApp" */;
@@ -97,6 +147,10 @@
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Jack Rosen";
 				TargetAttributes = {
+					A0A90496224827FF0012E056 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = A0F14B07221EF7E4009DC4D2;
+					};
 					A0F14B07221EF7E4009DC4D2 = {
 						CreatedOnToolsVersion = 10.1;
 					};
@@ -116,11 +170,19 @@
 			projectRoot = "";
 			targets = (
 				A0F14B07221EF7E4009DC4D2 /* SamplePDFDrawingViewApp */,
+				A0A90496224827FF0012E056 /* PDFDrawingViewTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A0A90495224827FF0012E056 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A0F14B06221EF7E4009DC4D2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -135,6 +197,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A0A90493224827FF0012E056 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0A9049A224827FF0012E056 /* PDFDrawingViewTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A0F14B04221EF7E4009DC4D2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -145,6 +215,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A0A9049D224827FF0012E056 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A0F14B07221EF7E4009DC4D2 /* SamplePDFDrawingViewApp */;
+			targetProxy = A0A9049C224827FF0012E056 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		A0F14B0F221EF7E4009DC4D2 /* Main.storyboard */ = {
@@ -166,6 +244,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		A0A9049E224827FF0012E056 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SCB9RTL9PP;
+				INFOPLIST_FILE = PDFDrawingViewTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.JackRosen.PDFDrawingViewTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SamplePDFDrawingViewApp.app/SamplePDFDrawingViewApp";
+			};
+			name = Debug;
+		};
+		A0A9049F224827FF0012E056 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SCB9RTL9PP;
+				INFOPLIST_FILE = PDFDrawingViewTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.JackRosen.PDFDrawingViewTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SamplePDFDrawingViewApp.app/SamplePDFDrawingViewApp";
+			};
+			name = Release;
+		};
 		A0F14B18221EF7E6009DC4D2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -323,6 +441,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A0A904A0224827FF0012E056 /* Build configuration list for PBXNativeTarget "PDFDrawingViewTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A0A9049E224827FF0012E056 /* Debug */,
+				A0A9049F224827FF0012E056 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A0F14B03221EF7E4009DC4D2 /* Build configuration list for PBXProject "SamplePDFDrawingViewApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

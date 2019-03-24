@@ -37,11 +37,7 @@ class OverTopText: UITextView, UIGestureRecognizerDelegate {
     
     @objc func swipe(_ pan: UIPanGestureRecognizer)
     {
-        if let swipe = self.swipe{
-            if (self.isFirstResponder || touches > 1)
-            {
-                return
-            }
+        if let swipe = self.swipe, !self.isFirstResponder, touches == 1{
             self.layer.borderColor = UIColor.darkText.cgColor
             self.layer.borderWidth = 1
             if (pan.state == .ended || pan.state == .cancelled)

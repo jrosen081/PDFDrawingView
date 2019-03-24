@@ -107,29 +107,10 @@ public class PDFDrawingView: UIView{
             return
         }
         super.init(frame: frame)
-		let scale = self.getScale(number: 0)
-		let pageSize = CGSize(width: (page.bounds(for: .mediaBox).width) * scale, height: (page.bounds(for: .artBox).height * scale))
         backgroundView.frame = frame
         self.drawer.drawingType = DrawingKeys.draw
-		if (style == .vertical){
-			offsets.append(Border(topX: 0, topY: 0, bottomX: 0, bottomY: pageSize.height))
-		} else {
-			offsets.append(Border(topX: 0, topY: 0, bottomX: pageSize.width, bottomY: 0))
-		}
-        for counter in 1 ..< numberOfPages{
-			let internalScale = self.getScale(number: counter)
-			guard let upPage = document.page(at: counter) else {return}
-			let border: Border
-			switch self.renderStyle {
-				case .horizontal:
-					border = Border(topX: offsets[counter - 1].bottomX, topY: offsets[counter - 1].bottomY, bottomX: offsets[counter - 1].bottomX + (upPage.bounds(for: .artBox).width * internalScale), bottomY: offsets[counter - 1].bottomY)
-					break
-				case .vertical:
-					border = Border(topX: offsets[counter - 1].bottomX, topY:offsets[counter - 1].bottomY, bottomX: offsets[counter - 1].bottomX, bottomY: offsets[counter - 1].bottomY + (upPage.bounds(for: .artBox).height * internalScale))
-					break
-			}
-            offsets.append(border)
-        }
+		self.offsets.append(contentsOf: self.getAllOffsets(pages: self.numberOfPages, renderStyle: self.renderStyle, page: page))
+		// Creates the background view that will actually hold the pdf pages
 		let holder: UIView
 		switch self.renderStyle {
 		case .horizontal:
@@ -142,6 +123,7 @@ public class PDFDrawingView: UIView{
         drawer = DrawingView(frame: holder.frame)
         drawer.delegate = self
         self.backgroundView.contentInset = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
+		// Updates the background to be sized correctly
         backgroundHold.frame = holder.frame
         backgroundHold.addSubview(holder)
         backgroundHold.addSubview(drawer)
@@ -158,9 +140,37 @@ public class PDFDrawingView: UIView{
 		drawer.isUserInteractionEnabled = true
         delegate?.viewWasCreated()
     }
+	
+	// Get all offsets
+	func getAllOffsets(pages: Int, renderStyle: DrawingStyle, page: PDFPage) -> [Border]{
+		let scale = self.getScale(number: 0)
+		let pageSize = CGSize(width: (page.bounds(for: .mediaBox).width) * scale, height: (page.bounds(for: .artBox).height * scale))
+		var offsets = [Border]()
+		if (renderStyle == .vertical){
+			offsets.append(Border(topX: 0, topY: 0, bottomX: self.frame.width, bottomY: pageSize.height))
+		} else {
+			offsets.append(Border(topX: 0, topY: 0, bottomX: pageSize.width, bottomY: self.frame.height))
+		}
+		for counter in 1 ..< numberOfPages{
+			let internalScale = self.getScale(number: counter)
+			guard let upPage = document.page(at: counter), let lastPage = offsets.last else {return offsets}
+			let border: Border
+			switch renderStyle {
+			case .horizontal:
+				border = Border(topX: lastPage.bottomX, topY: lastPage.topY, bottomX: lastPage.bottomX + (upPage.bounds(for: .artBox).width * internalScale), bottomY: lastPage.bottomY)
+				break
+			case .vertical:
+				border = Border(topX: lastPage.topX, topY:offsets[counter - 1].bottomY, bottomX: lastPage.bottomX, bottomY: lastPage.bottomY + (upPage.bounds(for: .artBox).height * internalScale))
+				break
+			}
+			offsets.append(border)
+		}
+		return offsets
+	}
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+	// Draws the first pages in the given range.
     private func drawBeginning(holder: UIView, range: CountableRange<Int>){
         visiblePages.forEach({$0.removeFromSuperview()})
         visiblePages.removeAll()
@@ -169,9 +179,10 @@ public class PDFDrawingView: UIView{
 			visiblePages.append(drawPage(number: counter))
         }
     }
+	// Finds the range of 3 pages to draw given the current page number
     private func findRange(_ currentPageNumber: Int) -> CountableRange<Int>{
         if (currentPageNumber - 2 < 0){
-            return 0 ..< 3
+            return 0 ..< min(self.numberOfPages, 3)
         }
         else if (currentPageNumber != numberOfPages){
             return currentPageNumber - 2 ..< currentPageNumber + 1
@@ -183,16 +194,8 @@ public class PDFDrawingView: UIView{
 	@discardableResult
     private func drawPage(number: Int) -> PDFPageDisplayer{
 		guard let page = document.page(at: number) else {return PDFPageDisplayer(frame: CGRect.zero, page: nil)}
-		let size = page.bounds(for: .artBox)
 		let internalScale = self.getScale(number: number)
-		let displayer: PDFPageDisplayer
-		switch self.renderStyle {
-		case .vertical:
-			displayer = PDFPageDisplayer(frame: CGRect(x: offsets[number].topX, y: offsets[number].topY, width: self.frame.width, height: size.height * internalScale), page: page, scale: internalScale)
-			break
-		case .horizontal:
-			displayer = PDFPageDisplayer(frame: CGRect(x: offsets[number].topX, y: offsets[number].topY, width: size.width * internalScale, height: self.frame.height), page: page, scale: internalScale)
-		}
+		let displayer = PDFPageDisplayer(frame: CGRect(x: offsets[number].topX, y: offsets[number].topY, width: offsets[number].bottomX - offsets[number].topX, height: offsets[number].bottomY - offsets[number].topY), page: page, scale: internalScale)
         displayer.pageNumber = number
         backgroundHold.subviews[0].addSubview(displayer)
 		return displayer
@@ -257,14 +260,9 @@ public class PDFDrawingView: UIView{
      - parameter page: The page to scroll to
     */
     public func scrollTo(page: Int){
-        let currentPageNumber = page
-        if (currentPageNumber < 1){
-            self.currentPageNumber = 1
-        }else if (currentPageNumber > numberOfPages){
-            self.currentPageNumber = numberOfPages
-        }else{
-            self.currentPageNumber = currentPageNumber
-        }
+		// Makes the current page number the closes number to page within range
+        self.currentPageNumber = min(self.numberOfPages, max(page, 1))
+		
         backgroundView.setZoomScale(1, animated: true)
         backgroundView.delegate = nil
         backgroundView.setContentOffset(CGPoint(x: self.offsets[self.currentPageNumber - 1].topX, y: self.offsets[self.currentPageNumber - 1].topY), animated: true)
@@ -330,11 +328,11 @@ extension PDFDrawingView: UIScrollViewDelegate{
     private func checkAbove(offset: CGFloat, test: CGFloat) -> Bool{
         return offset - test < self.frame.height && offset >= test
     }
+	
     public func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
         drawBeginning(holder: self.backgroundHold.subviews[0],range: 0 ..< min(numberOfPages, 3))
-        
     }
-	
+	// Gets the scale for the page at the given number
 	private func getScale(number: Int) -> CGFloat{
 		guard let page = document.page(at: number) else{
 			return -1
@@ -350,10 +348,10 @@ extension PDFDrawingView: UIScrollViewDelegate{
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
 		switch self.renderStyle {
 		case .horizontal:
-			updateHorizontal(scrollView)
+			self.updateHorizontal(scrollView)
 			break
 		case .vertical:
-			updateVertical(scrollView)
+			self.updateVertical(scrollView)
 			break
 		}
     }
