@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "DrawingPDF"
-  s.version      = "2.0.0"
+  s.version      = "2.0.1"
   s.summary      = "A lightweight Swift PDFViewer that has built in drawing functionality."
 
   # This description is used to generate tags and improve search results.
@@ -103,4 +103,6 @@ Pod::Spec.new do |s|
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # s.dependency "JSONKit", "~> 1.4"
   s.swift_version = "4.2"
+
+  s.user_target_xcconfig = { 'FRAMEWORK_SEARCH_PATHS' => '$(PLATFORM_DIR)/Developer/Library/Frameworks' }
 end

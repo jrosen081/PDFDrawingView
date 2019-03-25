@@ -1,0 +1,16 @@
+PODS:
+  - DrawingPDF (2.0.0)
+
+DEPENDENCIES:
+  - DrawingPDF
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - DrawingPDF
+
+SPEC CHECKSUMS:
+  DrawingPDF: 9aaf3dfd4861889126effe531a90b1302262a9c7
+
+PODFILE CHECKSUM: 903c764c15f3d19b9f7b0c8b320e53354a19f18c
+
+COCOAPODS: 1.5.3

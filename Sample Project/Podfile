@@ -8,4 +8,9 @@ target ‘SamplePDFDrawingViewApp’ do
 
   # Pods for drawSecure
   pod 'DrawingPDF'
+
+  target 'SamplePDFDrawingViewAppTests' do 
+    inherit! :search_paths
+    use_frameworks!
+  end
 end

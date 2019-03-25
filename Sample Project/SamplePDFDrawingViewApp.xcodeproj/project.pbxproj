@@ -7,17 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A0A9049A224827FF0012E056 /* PDFDrawingViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A90499224827FF0012E056 /* PDFDrawingViewTests.swift */; };
+		6A0A1A46779219232EF0CACB /* Pods_SamplePDFDrawingViewApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F959D53B60032E9129C1E04C /* Pods_SamplePDFDrawingViewApp.framework */; };
+		A0A904A9224877A10012E056 /* TestLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A904A8224877A10012E056 /* TestLines.swift */; };
+		A0A904B122487B190012E056 /* TestDrawingLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A904B022487B190012E056 /* TestDrawingLine.swift */; };
+		A0A904B322487DFB0012E056 /* TestDoubleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A904B222487DFB0012E056 /* TestDoubleExtensions.swift */; };
+		A0A904B522487F5B0012E056 /* TestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A904B422487F5B0012E056 /* TestExtensions.swift */; };
 		A0F14B0C221EF7E4009DC4D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F14B0B221EF7E4009DC4D2 /* AppDelegate.swift */; };
 		A0F14B0E221EF7E4009DC4D2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F14B0D221EF7E4009DC4D2 /* ViewController.swift */; };
 		A0F14B11221EF7E4009DC4D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0F14B0F221EF7E4009DC4D2 /* Main.storyboard */; };
 		A0F14B13221EF7E6009DC4D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0F14B12221EF7E6009DC4D2 /* Assets.xcassets */; };
 		A0F14B16221EF7E6009DC4D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0F14B14221EF7E6009DC4D2 /* LaunchScreen.storyboard */; };
 		A0F14B1E221EF944009DC4D2 /* ListAbstractions.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A0F14B1D221EF944009DC4D2 /* ListAbstractions.pdf */; };
+		C8F7BDAAE1106C247539702B /* Pods_SamplePDFDrawingViewAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B90AA04D0F0231FF8EFB83D /* Pods_SamplePDFDrawingViewAppTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		A0A9049C224827FF0012E056 /* PBXContainerItemProxy */ = {
+		A0A904AB224877A10012E056 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A0F14B00221EF7E4009DC4D2 /* Project object */;
 			proxyType = 1;
@@ -27,9 +32,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A0A90497224827FF0012E056 /* PDFDrawingViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PDFDrawingViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A0A90499224827FF0012E056 /* PDFDrawingViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFDrawingViewTests.swift; sourceTree = "<group>"; };
-		A0A9049B224827FF0012E056 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B90AA04D0F0231FF8EFB83D /* Pods_SamplePDFDrawingViewAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SamplePDFDrawingViewAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4098933F730A06AFE4B803FA /* Pods-SamplePDFDrawingViewAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SamplePDFDrawingViewAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SamplePDFDrawingViewAppTests/Pods-SamplePDFDrawingViewAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		66753F67DD84C6E739A336DC /* Pods-SamplePDFDrawingViewApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SamplePDFDrawingViewApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SamplePDFDrawingViewApp/Pods-SamplePDFDrawingViewApp.debug.xcconfig"; sourceTree = "<group>"; };
+		A0A904A6224877A10012E056 /* SamplePDFDrawingViewAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SamplePDFDrawingViewAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0A904A8224877A10012E056 /* TestLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLines.swift; sourceTree = "<group>"; };
+		A0A904AA224877A10012E056 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A0A904B022487B190012E056 /* TestDrawingLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDrawingLine.swift; sourceTree = "<group>"; };
+		A0A904B222487DFB0012E056 /* TestDoubleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDoubleExtensions.swift; sourceTree = "<group>"; };
+		A0A904B422487F5B0012E056 /* TestExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestExtensions.swift; sourceTree = "<group>"; };
 		A0F14B08221EF7E4009DC4D2 /* SamplePDFDrawingViewApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SamplePDFDrawingViewApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0F14B0B221EF7E4009DC4D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0F14B0D221EF7E4009DC4D2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -38,13 +49,17 @@
 		A0F14B15221EF7E6009DC4D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A0F14B17221EF7E6009DC4D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0F14B1D221EF944009DC4D2 /* ListAbstractions.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ListAbstractions.pdf; sourceTree = "<group>"; };
+		C7BC9B4FEBF4A8439ACF6BD9 /* Pods-SamplePDFDrawingViewAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SamplePDFDrawingViewAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SamplePDFDrawingViewAppTests/Pods-SamplePDFDrawingViewAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		EB2E5979B5716D7C2D696983 /* Pods-SamplePDFDrawingViewApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SamplePDFDrawingViewApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-SamplePDFDrawingViewApp/Pods-SamplePDFDrawingViewApp.release.xcconfig"; sourceTree = "<group>"; };
+		F959D53B60032E9129C1E04C /* Pods_SamplePDFDrawingViewApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SamplePDFDrawingViewApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		A0A90494224827FF0012E056 /* Frameworks */ = {
+		A0A904A3224877A10012E056 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8F7BDAAE1106C247539702B /* Pods_SamplePDFDrawingViewAppTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,27 +67,42 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A0A1A46779219232EF0CACB /* Pods_SamplePDFDrawingViewApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A0A90498224827FF0012E056 /* PDFDrawingViewTests */ = {
+		003C353D2D81809C3A4BD753 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A0A90499224827FF0012E056 /* PDFDrawingViewTests.swift */,
-				A0A9049B224827FF0012E056 /* Info.plist */,
+				F959D53B60032E9129C1E04C /* Pods_SamplePDFDrawingViewApp.framework */,
+				1B90AA04D0F0231FF8EFB83D /* Pods_SamplePDFDrawingViewAppTests.framework */,
 			);
-			path = PDFDrawingViewTests;
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A0A904A7224877A10012E056 /* SamplePDFDrawingViewAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				A0A904A8224877A10012E056 /* TestLines.swift */,
+				A0A904B022487B190012E056 /* TestDrawingLine.swift */,
+				A0A904AA224877A10012E056 /* Info.plist */,
+				A0A904B222487DFB0012E056 /* TestDoubleExtensions.swift */,
+				A0A904B422487F5B0012E056 /* TestExtensions.swift */,
+			);
+			path = SamplePDFDrawingViewAppTests;
 			sourceTree = "<group>";
 		};
 		A0F14AFF221EF7E4009DC4D2 = {
 			isa = PBXGroup;
 			children = (
 				A0F14B0A221EF7E4009DC4D2 /* SamplePDFDrawingViewApp */,
-				A0A90498224827FF0012E056 /* PDFDrawingViewTests */,
+				A0A904A7224877A10012E056 /* SamplePDFDrawingViewAppTests */,
 				A0F14B09221EF7E4009DC4D2 /* Products */,
+				AB06ABB4D3669881056D5242 /* Pods */,
+				003C353D2D81809C3A4BD753 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -80,7 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				A0F14B08221EF7E4009DC4D2 /* SamplePDFDrawingViewApp.app */,
-				A0A90497224827FF0012E056 /* PDFDrawingViewTests.xctest */,
+				A0A904A6224877A10012E056 /* SamplePDFDrawingViewAppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -99,34 +129,48 @@
 			path = SamplePDFDrawingViewApp;
 			sourceTree = "<group>";
 		};
+		AB06ABB4D3669881056D5242 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				66753F67DD84C6E739A336DC /* Pods-SamplePDFDrawingViewApp.debug.xcconfig */,
+				EB2E5979B5716D7C2D696983 /* Pods-SamplePDFDrawingViewApp.release.xcconfig */,
+				4098933F730A06AFE4B803FA /* Pods-SamplePDFDrawingViewAppTests.debug.xcconfig */,
+				C7BC9B4FEBF4A8439ACF6BD9 /* Pods-SamplePDFDrawingViewAppTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A0A90496224827FF0012E056 /* PDFDrawingViewTests */ = {
+		A0A904A5224877A10012E056 /* SamplePDFDrawingViewAppTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A0A904A0224827FF0012E056 /* Build configuration list for PBXNativeTarget "PDFDrawingViewTests" */;
+			buildConfigurationList = A0A904AF224877A10012E056 /* Build configuration list for PBXNativeTarget "SamplePDFDrawingViewAppTests" */;
 			buildPhases = (
-				A0A90493224827FF0012E056 /* Sources */,
-				A0A90494224827FF0012E056 /* Frameworks */,
-				A0A90495224827FF0012E056 /* Resources */,
+				5E2968D3898E3357C3F6E304 /* [CP] Check Pods Manifest.lock */,
+				A0A904A2224877A10012E056 /* Sources */,
+				A0A904A3224877A10012E056 /* Frameworks */,
+				A0A904A4224877A10012E056 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				A0A9049D224827FF0012E056 /* PBXTargetDependency */,
+				A0A904AC224877A10012E056 /* PBXTargetDependency */,
 			);
-			name = PDFDrawingViewTests;
-			productName = PDFDrawingViewTests;
-			productReference = A0A90497224827FF0012E056 /* PDFDrawingViewTests.xctest */;
+			name = SamplePDFDrawingViewAppTests;
+			productName = SamplePDFDrawingViewAppTests;
+			productReference = A0A904A6224877A10012E056 /* SamplePDFDrawingViewAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		A0F14B07221EF7E4009DC4D2 /* SamplePDFDrawingViewApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A0F14B1A221EF7E6009DC4D2 /* Build configuration list for PBXNativeTarget "SamplePDFDrawingViewApp" */;
 			buildPhases = (
+				38615DC7CC9AF50764544E6E /* [CP] Check Pods Manifest.lock */,
 				A0F14B04221EF7E4009DC4D2 /* Sources */,
 				A0F14B05221EF7E4009DC4D2 /* Frameworks */,
 				A0F14B06221EF7E4009DC4D2 /* Resources */,
+				B462C872C0076ED7E7390167 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -147,7 +191,7 @@
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Jack Rosen";
 				TargetAttributes = {
-					A0A90496224827FF0012E056 = {
+					A0A904A5224877A10012E056 = {
 						CreatedOnToolsVersion = 10.1;
 						TestTargetID = A0F14B07221EF7E4009DC4D2;
 					};
@@ -170,13 +214,13 @@
 			projectRoot = "";
 			targets = (
 				A0F14B07221EF7E4009DC4D2 /* SamplePDFDrawingViewApp */,
-				A0A90496224827FF0012E056 /* PDFDrawingViewTests */,
+				A0A904A5224877A10012E056 /* SamplePDFDrawingViewAppTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		A0A90495224827FF0012E056 /* Resources */ = {
+		A0A904A4224877A10012E056 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -196,12 +240,72 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		38615DC7CC9AF50764544E6E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SamplePDFDrawingViewApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5E2968D3898E3357C3F6E304 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SamplePDFDrawingViewAppTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B462C872C0076ED7E7390167 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SamplePDFDrawingViewApp/Pods-SamplePDFDrawingViewApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/DrawingPDF/DrawingPDF.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DrawingPDF.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SamplePDFDrawingViewApp/Pods-SamplePDFDrawingViewApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		A0A90493224827FF0012E056 /* Sources */ = {
+		A0A904A2224877A10012E056 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0A9049A224827FF0012E056 /* PDFDrawingViewTests.swift in Sources */,
+				A0A904B122487B190012E056 /* TestDrawingLine.swift in Sources */,
+				A0A904B322487DFB0012E056 /* TestDoubleExtensions.swift in Sources */,
+				A0A904A9224877A10012E056 /* TestLines.swift in Sources */,
+				A0A904B522487F5B0012E056 /* TestExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,10 +321,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		A0A9049D224827FF0012E056 /* PBXTargetDependency */ = {
+		A0A904AC224877A10012E056 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = A0F14B07221EF7E4009DC4D2 /* SamplePDFDrawingViewApp */;
-			targetProxy = A0A9049C224827FF0012E056 /* PBXContainerItemProxy */;
+			targetProxy = A0A904AB224877A10012E056 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -244,19 +348,20 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		A0A9049E224827FF0012E056 /* Debug */ = {
+		A0A904AD224877A10012E056 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4098933F730A06AFE4B803FA /* Pods-SamplePDFDrawingViewAppTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SCB9RTL9PP;
-				INFOPLIST_FILE = PDFDrawingViewTests/Info.plist;
+				INFOPLIST_FILE = SamplePDFDrawingViewAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.JackRosen.PDFDrawingViewTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.JackRosen.SamplePDFDrawingViewAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -264,19 +369,20 @@
 			};
 			name = Debug;
 		};
-		A0A9049F224827FF0012E056 /* Release */ = {
+		A0A904AE224877A10012E056 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C7BC9B4FEBF4A8439ACF6BD9 /* Pods-SamplePDFDrawingViewAppTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SCB9RTL9PP;
-				INFOPLIST_FILE = PDFDrawingViewTests/Info.plist;
+				INFOPLIST_FILE = SamplePDFDrawingViewAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.JackRosen.PDFDrawingViewTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.JackRosen.SamplePDFDrawingViewAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -402,6 +508,7 @@
 		};
 		A0F14B1B221EF7E6009DC4D2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 66753F67DD84C6E739A336DC /* Pods-SamplePDFDrawingViewApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -421,6 +528,7 @@
 		};
 		A0F14B1C221EF7E6009DC4D2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EB2E5979B5716D7C2D696983 /* Pods-SamplePDFDrawingViewApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -441,11 +549,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A0A904A0224827FF0012E056 /* Build configuration list for PBXNativeTarget "PDFDrawingViewTests" */ = {
+		A0A904AF224877A10012E056 /* Build configuration list for PBXNativeTarget "SamplePDFDrawingViewAppTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A0A9049E224827FF0012E056 /* Debug */,
-				A0A9049F224827FF0012E056 /* Release */,
+				A0A904AD224877A10012E056 /* Debug */,
+				A0A904AE224877A10012E056 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
