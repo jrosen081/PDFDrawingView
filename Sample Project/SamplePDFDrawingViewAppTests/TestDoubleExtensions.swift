@@ -11,13 +11,13 @@ import XCTest
 
 class TestDoubleExtensions: XCTestCase {
 	func testIsWithin(){
-		assert(1.0.isWithin(other: 1, percentage: 0.1))
-		assert(1.0.isWithin(other: 1.01, percentage: 0.1))
-		assert(!1.0.isWithin(other: 1.1, percentage: 0.01))
+		XCTAssert(1.0.isWithin(other: 1, percentage: 0.1))
+		XCTAssert(1.0.isWithin(other: 1.01, percentage: 0.1))
+		XCTAssert(!1.0.isWithin(other: 1.1, percentage: 0.01))
 	}
 	
 	func testExtensions() {
-		assert((-1.0).abs().isWithin(other: 1, percentage: 0.1))
+		XCTAssert((-1.0).abs().isWithin(other: 1, percentage: 0.1))
 	}
 }
 

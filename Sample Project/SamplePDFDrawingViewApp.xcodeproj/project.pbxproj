@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6A0A1A46779219232EF0CACB /* Pods_SamplePDFDrawingViewApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F959D53B60032E9129C1E04C /* Pods_SamplePDFDrawingViewApp.framework */; };
+		A061C2D722543FAC0035C769 /* TestOverloads.swift in Sources */ = {isa = PBXBuildFile; fileRef = A061C2D622543FAC0035C769 /* TestOverloads.swift */; };
+		A061C2D922544AE60035C769 /* TestPDFDisplaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = A061C2D822544AE60035C769 /* TestPDFDisplaying.swift */; };
 		A0A904A9224877A10012E056 /* TestLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A904A8224877A10012E056 /* TestLines.swift */; };
 		A0A904B122487B190012E056 /* TestDrawingLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A904B022487B190012E056 /* TestDrawingLine.swift */; };
 		A0A904B322487DFB0012E056 /* TestDoubleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A904B222487DFB0012E056 /* TestDoubleExtensions.swift */; };
@@ -35,6 +37,8 @@
 		1B90AA04D0F0231FF8EFB83D /* Pods_SamplePDFDrawingViewAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SamplePDFDrawingViewAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4098933F730A06AFE4B803FA /* Pods-SamplePDFDrawingViewAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SamplePDFDrawingViewAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SamplePDFDrawingViewAppTests/Pods-SamplePDFDrawingViewAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		66753F67DD84C6E739A336DC /* Pods-SamplePDFDrawingViewApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SamplePDFDrawingViewApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SamplePDFDrawingViewApp/Pods-SamplePDFDrawingViewApp.debug.xcconfig"; sourceTree = "<group>"; };
+		A061C2D622543FAC0035C769 /* TestOverloads.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestOverloads.swift; sourceTree = "<group>"; };
+		A061C2D822544AE60035C769 /* TestPDFDisplaying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPDFDisplaying.swift; sourceTree = "<group>"; };
 		A0A904A6224877A10012E056 /* SamplePDFDrawingViewAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SamplePDFDrawingViewAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0A904A8224877A10012E056 /* TestLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLines.swift; sourceTree = "<group>"; };
 		A0A904AA224877A10012E056 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -91,6 +95,8 @@
 				A0A904AA224877A10012E056 /* Info.plist */,
 				A0A904B222487DFB0012E056 /* TestDoubleExtensions.swift */,
 				A0A904B422487F5B0012E056 /* TestExtensions.swift */,
+				A061C2D622543FAC0035C769 /* TestOverloads.swift */,
+				A061C2D822544AE60035C769 /* TestPDFDisplaying.swift */,
 			);
 			path = SamplePDFDrawingViewAppTests;
 			sourceTree = "<group>";
@@ -302,9 +308,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A061C2D722543FAC0035C769 /* TestOverloads.swift in Sources */,
 				A0A904B122487B190012E056 /* TestDrawingLine.swift in Sources */,
 				A0A904B322487DFB0012E056 /* TestDoubleExtensions.swift in Sources */,
 				A0A904A9224877A10012E056 /* TestLines.swift in Sources */,
+				A061C2D922544AE60035C769 /* TestPDFDisplaying.swift in Sources */,
 				A0A904B522487F5B0012E056 /* TestExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

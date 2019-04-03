@@ -20,16 +20,16 @@ class TestLines: XCTestCase {
 
     func testComputedProperties() {
 		let line = Line(startingPoint: CGPoint(x: 10, y: 10))
-		assert(line.first == CGPoint(x: 10, y: 10))
-		assert(line.last == CGPoint(x: 10, y: 10))
-		assert(line.points == [CGPoint(x: 10, y: 10)])
+		XCTAssert(line.first == CGPoint(x: 10, y: 10))
+		XCTAssert(line.last == CGPoint(x: 10, y: 10))
+		XCTAssert(line.points == [CGPoint(x: 10, y: 10)])
     }
 	
 	func testMutations() {
 		let point = CGPoint(x: 10, y: 10)
 		let line = Line(startingPoint: point)
 		line.translate(by: CGVector(dx: -10, dy: -10))
-		assert(line.points.first == CGPoint.zero)
+		XCTAssert(line.points.first == CGPoint.zero)
 		line.translate(by: CGVector(dx: 10, dy: 10))
 	}
 
