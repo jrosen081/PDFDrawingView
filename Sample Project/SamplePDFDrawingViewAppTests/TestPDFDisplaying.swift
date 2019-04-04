@@ -34,5 +34,24 @@ class TestPDFDisplaying: XCTestCase {
 		XCTAssertEqual(pdfView.visiblePages.count, 2)
 		XCTAssertEqual(pdfView.zoomScale, 1)
 		XCTAssertEqual(pdfView.visiblePages[0].pageNumber, 0)
+		pdfView.drawingKey = PDFDrawingView.DrawingKeys.erase
+		XCTAssertEqual(pdfView.drawingKey, "erase")
+		pdfView.drawingColor = .blue
+		XCTAssertEqual(pdfView.drawingColor, .blue)
+		pdfView.highlightColor = .red
+		XCTAssertEqual(pdfView.highlightColor, UIColor.red)
 	}
+	
+	public func testPDFCreating(){
+		let pdfView = PDFDrawingView(frame: CGRect(x: 0, y: 0, width: 100, height: 100), document: pdf)
+		if let _ = UIGraphicsGetCurrentContext() {
+			let newPDF = PDFDocument(data: pdfView.createPDF())
+			XCTAssertNotNil(newPDF)
+			if let df = newPDF {
+				XCTAssertEqual(df.pageCount, 2)
+				XCTAssertEqual(df.dataRepresentation(), pdfView.createPDF())
+			}
+		}
+	}
+	
 }

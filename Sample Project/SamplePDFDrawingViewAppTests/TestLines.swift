@@ -32,5 +32,24 @@ class TestLines: XCTestCase {
 		XCTAssert(line.points.first == CGPoint.zero)
 		line.translate(by: CGVector(dx: 10, dy: 10))
 	}
+	
+	func testEquality() {
+		let line1: DrawingLine = DrawingLine(startingPoint: CGPoint.zero, color: UIColor.red.cgColor)
+		let line2 = DrawingLine(startingPoint: CGPoint(x: 10, y: 10), color: UIColor.red.cgColor)
+		let line3 = DrawingLine(startingPoint: CGPoint.zero, color: UIColor.red.cgColor)
+		XCTAssertTrue(line1 == line3)
+		XCTAssertFalse(line1 == line2)
+		line1.append(CGPoint(x: 10, y: 10), with: nil)
+		XCTAssertTrue(line1 != line3)
+		line3.append(CGPoint(x: 10, y: 10), with: nil)
+		XCTAssertTrue(line1 == line3)
+	}
+	
+	func testZoom() {
+		let line = Line(startingPoint: CGPoint(x: 10, y: 10))
+		XCTAssertEqual(line.zoom(scale: 1.5, moveBy: CGVector.zero), CGVector.zero)
+		XCTAssertEqual(line, Line(startingPoint: CGPoint(x: 15, y: 15)))
+		
+	}
 
 }
