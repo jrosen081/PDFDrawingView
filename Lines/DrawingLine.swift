@@ -217,33 +217,7 @@ class DrawingLine: Line{
         self.layer.path = newPath.cgPath
     }
 }
-extension CGPoint{
-    func distance(to point: CGPoint) -> CGVector{
-        return CGVector(dx: point.x - self.x, dy: point.y - self.y)
-    }
-    static func + (lhs: CGPoint, rhs: CGVector) -> CGPoint{
-        return CGPoint(x: lhs.x + rhs.dx, y: lhs.y + rhs.dy)
-    }
-    static func - (lhs: CGPoint, rhs: CGVector) -> CGPoint{
-        return CGPoint(x: lhs.x - rhs.dx, y: lhs.y - rhs.dy)
-    }
-}
-extension CGVector{
-    func normalized() -> CGVector{
-        let y = self.dy == 0 ? 0 : -self.dy
-        return CGVector(dx: y, dy: self.dx)
-    }
-    func unitize() -> CGVector{
-        var distance = sqrt(Double((self.dx * self.dx) + (self.dy * self.dy)))
-        if distance == 0{
-            distance = 1
-        }
-        return CGVector(dx: self.dx / CGFloat(distance), dy: self.dy / CGFloat(distance))
-    }
-    static func * (lhs: CGVector, rhs: CGFloat) -> CGVector{
-        return CGVector(dx: lhs.dx * rhs, dy: lhs.dy * rhs)
-    }
-}
+
 fileprivate extension UIBezierPath{
     func addStrokeToPath(stroke: Stroke, previousPoints: inout (CGPoint, CGPoint)?){
         guard let lastPoints = previousPoints else {return}
@@ -258,22 +232,3 @@ fileprivate extension UIBezierPath{
     }
 }
 
-extension Double{
-	func abs() -> Double{
-		if self < 0 {
-			return -1 * self
-		} else {
-			return self
-		}
-	}
-}
-
-extension CGPoint {
-	func shiftUpBy(_ angle: Double, _ offsetAmount: Double) -> CGPoint {
-		return CGPoint(x: Double(self.x) + sin(angle) * offsetAmount, y: Double(self.y) + cos(angle) * offsetAmount)
-	}
-	
-	func shiftDownBy(_ angle: Double, _ offsetAmount: Double) -> CGPoint {
-		return CGPoint(x: Double(self.x) - sin(angle) * offsetAmount, y: Double(self.y) - cos(angle) * offsetAmount)
-	}
-}

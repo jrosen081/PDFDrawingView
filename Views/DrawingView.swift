@@ -520,33 +520,3 @@ final class DrawingView: UIView, UITextViewDelegate, UIGestureRecognizerDelegate
 		}
 	}
 }
-
-public extension CGPoint{
-	// Returns a new point with the different subtracted
-	public func subtract(point: CGPoint) -> CGPoint{
-		return CGPoint(x: self.x - point.x, y: self.y - point.y)
-	}
-	
-	// Scales a point
-	static func * (lhs: CGPoint, rhs: CGFloat) -> CGPoint {
-		return CGPoint(x: lhs.x * rhs, y: lhs.y * rhs)
-	}
-	// Creates a line of points between this and the other point
-	public func addIncrements(amount: Int, until point: CGPoint) -> [CGPoint]
-	{
-		var array = [CGPoint]()
-		let xDistance = (point.x - self.x) / CGFloat(amount)
-		let yDistance = (point.y - self.y) / CGFloat(amount)
-		let movementVector = CGVector(dx: xDistance, dy: yDistance)
-		for counter in 1 ..< amount
-		{
-			array.append(self + movementVector * CGFloat(counter + 1))
-		}
-		return array
-	}
-	
-	// Gives a square around the given location
-	public func squareAround() -> [CGPoint] {
-		return [CGPoint(x: self.x - Constants.lineWidth,y: self.y - Constants.lineWidth), CGPoint(x: self.x + Constants.lineWidth,y: self.y - Constants.lineWidth), CGPoint(x: self.x + Constants.lineWidth,y: self.y + Constants.lineWidth)]
-	}
-}

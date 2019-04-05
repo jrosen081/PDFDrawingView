@@ -416,24 +416,3 @@ extension PDFDrawingView: UIScrollViewDelegate{
 		}
 	}
 }
-public extension Int{
-    public func toString() -> String{
-        return "\(self)"
-    }
-}
-extension CGRect{
-    static func *= (lhs: inout CGRect, rhs: CGFloat){
-        lhs = CGRect(x: lhs.origin.x, y: lhs.origin.y, width: lhs.width * rhs, height: lhs.height * rhs)
-    }
-    static func / (lhs: CGRect, rhs: CGFloat) -> CGRect{
-        return CGRect(x: lhs.origin.x, y: lhs.origin.y, width: lhs.width / rhs, height: lhs.height / rhs)
-    }
-}
-extension CGPoint{
-    static func / (lhs: CGPoint, rhs: CGFloat) -> CGPoint{
-        return CGPoint(x: 0, y: lhs.y / rhs)
-    }
-    static func + (lhs: CGPoint, rhs: CGFloat) -> CGPoint{
-        return CGPoint(x: lhs.x, y: lhs.y + rhs)
-    }
-}

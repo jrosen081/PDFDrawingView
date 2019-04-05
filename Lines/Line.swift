@@ -61,14 +61,4 @@ class Line: Equatable{
         self.drawLine()
     }
 }
-extension CGPoint{
-    func midPoint(with point: CGPoint) -> CGPoint
-    {
-        return CGPoint(x: (self.x + point.x) / 2, y: (self.y + point.y) / 2)
-    }
-	
-    public func moveBy(x: CGFloat, y: CGFloat) -> CGPoint
-    {
-		return self + CGVector(dx: x, dy: y)
-    }
-}
+

@@ -71,9 +71,3 @@ class OverTopText: UITextView, UIGestureRecognizerDelegate {
         return true
     }
 }
-public extension UITextView{
-    public func moveBy(x: CGFloat, y: CGFloat)
-    {
-        self.frame.origin = CGPoint(x: self.frame.origin.x + x, y: self.frame.origin.y + y)
-    }
-}
