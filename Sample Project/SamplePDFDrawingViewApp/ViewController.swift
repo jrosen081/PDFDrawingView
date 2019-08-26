@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import DrawingPDF
 import PDFKit
 
 class ViewController: UIViewController, PDFDelegate {
@@ -24,7 +23,7 @@ class ViewController: UIViewController, PDFDelegate {
 	 */
 	var pdfView: PDFDrawingView!
 	override func viewDidAppear(_ animated: Bool) {
-		if let path = Bundle.main.path(forResource: "ListAbstractions", ofType: "pdf"), let pdf = PDFDocument(url: URL(fileURLWithPath: path)){
+		if let path = Bundle.main.path(forResource: "Kant", ofType: "pdf"), let pdf = PDFDocument(url: URL(fileURLWithPath: path)){
 			pdfView = PDFDrawingView(frame: self.holdingView.bounds, document: pdf, style: .horizontal, delegate: self)
 			self.holdingView.addSubview(pdfView)
 		}

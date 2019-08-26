@@ -7,10 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6A0A1A46779219232EF0CACB /* Pods_SamplePDFDrawingViewApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F959D53B60032E9129C1E04C /* Pods_SamplePDFDrawingViewApp.framework */; };
+		6A0A1A46779219232EF0CACB /* Pods_SamplePDFDrawingViewApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F959D53B60032E9129C1E04C /* Pods_SamplePDFDrawingViewApp.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		A061C2D722543FAC0035C769 /* TestOverloads.swift in Sources */ = {isa = PBXBuildFile; fileRef = A061C2D622543FAC0035C769 /* TestOverloads.swift */; };
 		A061C2D922544AE60035C769 /* TestPDFDisplaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = A061C2D822544AE60035C769 /* TestPDFDisplaying.swift */; };
 		A061C2DB2255B8E50035C769 /* TestLassoLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A061C2DA2255B8E50035C769 /* TestLassoLine.swift */; };
+		A0A6B6BD23145EE60038447E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A6B6AD23145EE60038447E /* Constants.swift */; };
+		A0A6B6BE23145EE60038447E /* Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A6B6AE23145EE60038447E /* Border.swift */; };
+		A0A6B6BF23145EE60038447E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A6B6AF23145EE60038447E /* Extensions.swift */; };
+		A0A6B6C023145EE60038447E /* DrawingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A6B6B123145EE60038447E /* DrawingDelegate.swift */; };
+		A0A6B6C123145EE60038447E /* PDFDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A6B6B223145EE60038447E /* PDFDelegate.swift */; };
+		A0A6B6C223145EE60038447E /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A6B6B423145EE60038447E /* DrawingView.swift */; };
+		A0A6B6C323145EE60038447E /* OverTopText.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A6B6B523145EE60038447E /* OverTopText.swift */; };
+		A0A6B6C423145EE60038447E /* PDFDisplayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A6B6B623145EE60038447E /* PDFDisplayer.swift */; };
+		A0A6B6C523145EE60038447E /* PDFDrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A6B6B723145EE60038447E /* PDFDrawingView.swift */; };
+		A0A6B6C623145EE60038447E /* LassoLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A6B6B923145EE60038447E /* LassoLine.swift */; };
+		A0A6B6C723145EE60038447E /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A6B6BA23145EE60038447E /* Line.swift */; };
+		A0A6B6C823145EE60038447E /* Stroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A6B6BB23145EE60038447E /* Stroke.swift */; };
+		A0A6B6C923145EE60038447E /* DrawingLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A6B6BC23145EE60038447E /* DrawingLine.swift */; };
+		A0A6B6CB23145FB70038447E /* Kant.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A0A6B6CA23145FB70038447E /* Kant.pdf */; };
 		A0A904A9224877A10012E056 /* TestLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A904A8224877A10012E056 /* TestLines.swift */; };
 		A0A904B122487B190012E056 /* TestDrawingLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A904B022487B190012E056 /* TestDrawingLine.swift */; };
 		A0A904B322487DFB0012E056 /* TestDoubleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A904B222487DFB0012E056 /* TestDoubleExtensions.swift */; };
@@ -41,6 +55,21 @@
 		A061C2D622543FAC0035C769 /* TestOverloads.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestOverloads.swift; sourceTree = "<group>"; };
 		A061C2D822544AE60035C769 /* TestPDFDisplaying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPDFDisplaying.swift; sourceTree = "<group>"; };
 		A061C2DA2255B8E50035C769 /* TestLassoLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLassoLine.swift; sourceTree = "<group>"; };
+		A0A6B6AD23145EE60038447E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A0A6B6AE23145EE60038447E /* Border.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Border.swift; sourceTree = "<group>"; };
+		A0A6B6AF23145EE60038447E /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		A0A6B6B123145EE60038447E /* DrawingDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingDelegate.swift; sourceTree = "<group>"; };
+		A0A6B6B223145EE60038447E /* PDFDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDFDelegate.swift; sourceTree = "<group>"; };
+		A0A6B6B423145EE60038447E /* DrawingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
+		A0A6B6B523145EE60038447E /* OverTopText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverTopText.swift; sourceTree = "<group>"; };
+		A0A6B6B623145EE60038447E /* PDFDisplayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDFDisplayer.swift; sourceTree = "<group>"; };
+		A0A6B6B723145EE60038447E /* PDFDrawingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDFDrawingView.swift; sourceTree = "<group>"; };
+		A0A6B6B923145EE60038447E /* LassoLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LassoLine.swift; sourceTree = "<group>"; };
+		A0A6B6BA23145EE60038447E /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
+		A0A6B6BB23145EE60038447E /* Stroke.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stroke.swift; sourceTree = "<group>"; };
+		A0A6B6BC23145EE60038447E /* DrawingLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingLine.swift; sourceTree = "<group>"; };
+		A0A6B6CA23145FB70038447E /* Kant.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = Kant.pdf; path = ../../../../Kant.pdf; sourceTree = "<group>"; };
+		A0A6B6CC231462190038447E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		A0A904A6224877A10012E056 /* SamplePDFDrawingViewAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SamplePDFDrawingViewAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0A904A8224877A10012E056 /* TestLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLines.swift; sourceTree = "<group>"; };
 		A0A904AA224877A10012E056 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -83,10 +112,64 @@
 		003C353D2D81809C3A4BD753 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A0A6B6CC231462190038447E /* XCTest.framework */,
 				F959D53B60032E9129C1E04C /* Pods_SamplePDFDrawingViewApp.framework */,
 				1B90AA04D0F0231FF8EFB83D /* Pods_SamplePDFDrawingViewAppTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A0A6B6AB23145EE60038447E /* PDFDrawingView */ = {
+			isa = PBXGroup;
+			children = (
+				A0A6B6AC23145EE60038447E /* Data Structures */,
+				A0A6B6AF23145EE60038447E /* Extensions.swift */,
+				A0A6B6B023145EE60038447E /* Delegates */,
+				A0A6B6B323145EE60038447E /* Views */,
+				A0A6B6B823145EE60038447E /* Lines */,
+			);
+			name = PDFDrawingView;
+			path = ../../Sources/PDFDrawingView;
+			sourceTree = "<group>";
+		};
+		A0A6B6AC23145EE60038447E /* Data Structures */ = {
+			isa = PBXGroup;
+			children = (
+				A0A6B6AD23145EE60038447E /* Constants.swift */,
+				A0A6B6AE23145EE60038447E /* Border.swift */,
+			);
+			path = "Data Structures";
+			sourceTree = "<group>";
+		};
+		A0A6B6B023145EE60038447E /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				A0A6B6B123145EE60038447E /* DrawingDelegate.swift */,
+				A0A6B6B223145EE60038447E /* PDFDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		A0A6B6B323145EE60038447E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A0A6B6B423145EE60038447E /* DrawingView.swift */,
+				A0A6B6B523145EE60038447E /* OverTopText.swift */,
+				A0A6B6B623145EE60038447E /* PDFDisplayer.swift */,
+				A0A6B6B723145EE60038447E /* PDFDrawingView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A0A6B6B823145EE60038447E /* Lines */ = {
+			isa = PBXGroup;
+			children = (
+				A0A6B6B923145EE60038447E /* LassoLine.swift */,
+				A0A6B6BA23145EE60038447E /* Line.swift */,
+				A0A6B6BB23145EE60038447E /* Stroke.swift */,
+				A0A6B6BC23145EE60038447E /* DrawingLine.swift */,
+			);
+			path = Lines;
 			sourceTree = "<group>";
 		};
 		A0A904A7224877A10012E056 /* SamplePDFDrawingViewAppTests */ = {
@@ -127,7 +210,9 @@
 		A0F14B0A221EF7E4009DC4D2 /* SamplePDFDrawingViewApp */ = {
 			isa = PBXGroup;
 			children = (
+				A0A6B6AB23145EE60038447E /* PDFDrawingView */,
 				A0F14B1D221EF944009DC4D2 /* ListAbstractions.pdf */,
+				A0A6B6CA23145FB70038447E /* Kant.pdf */,
 				A0F14B0B221EF7E4009DC4D2 /* AppDelegate.swift */,
 				A0F14B0D221EF7E4009DC4D2 /* ViewController.swift */,
 				A0F14B0F221EF7E4009DC4D2 /* Main.storyboard */,
@@ -240,6 +325,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0A6B6CB23145FB70038447E /* Kant.pdf in Resources */,
 				A0F14B16221EF7E6009DC4D2 /* LaunchScreen.storyboard in Resources */,
 				A0F14B1E221EF944009DC4D2 /* ListAbstractions.pdf in Resources */,
 				A0F14B13221EF7E6009DC4D2 /* Assets.xcassets in Resources */,
@@ -325,8 +411,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0A6B6C623145EE60038447E /* LassoLine.swift in Sources */,
+				A0A6B6C523145EE60038447E /* PDFDrawingView.swift in Sources */,
+				A0A6B6BF23145EE60038447E /* Extensions.swift in Sources */,
+				A0A6B6C023145EE60038447E /* DrawingDelegate.swift in Sources */,
+				A0A6B6C923145EE60038447E /* DrawingLine.swift in Sources */,
+				A0A6B6C123145EE60038447E /* PDFDelegate.swift in Sources */,
+				A0A6B6C223145EE60038447E /* DrawingView.swift in Sources */,
+				A0A6B6C423145EE60038447E /* PDFDisplayer.swift in Sources */,
+				A0A6B6C723145EE60038447E /* Line.swift in Sources */,
+				A0A6B6C323145EE60038447E /* OverTopText.swift in Sources */,
 				A0F14B0E221EF7E4009DC4D2 /* ViewController.swift in Sources */,
+				A0A6B6BE23145EE60038447E /* Border.swift in Sources */,
 				A0F14B0C221EF7E4009DC4D2 /* AppDelegate.swift in Sources */,
+				A0A6B6BD23145EE60038447E /* Constants.swift in Sources */,
+				A0A6B6C823145EE60038447E /* Stroke.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,6 +505,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				BITCODE_GENERATION_MODE = "";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -457,6 +557,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "-fembed-bitcode";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -467,6 +568,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				BITCODE_GENERATION_MODE = "";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -511,6 +613,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_CFLAGS = "-fembed-bitcode";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
